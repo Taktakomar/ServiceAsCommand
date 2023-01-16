@@ -1,0 +1,41 @@
+app_login:
+  path: /
+  controller: App\Controller\SecurityController::login
+app_logout:
+  path: /logout
+  controller: App\Controller\SecurityController::logout
+reg:
+  path: /reg
+  controller: App\Controller\RegistrierungController::index
+flow:
+  path: /home/flows
+  controller: App\Controller\FlowsController::index
+flow_url_trigger:
+  path: /home/flows/url_trigger
+  controller: App\Controller\UrlTriggerController::showUrl
+flow_start:
+  path: /home/flows/startbyId/{id}
+  controller: App\Controller\FlowsController::startFlow
+flow_stop:
+  path: /home/flows/stopbyId/{id}
+  controller: App\Controller\FlowsController::stopFlow
+flow_access:
+  path: /home/flows/takeSuccess/{id}
+  controller: App\Controller\FlowsController::takeSuccess
+flow_sftp_in_sftp_out:
+  path: /home/flows/stfpIn/sftpOut/createFileByFlowId/{id}
+  controller: App\Controller\FlowJobsController::createFileByFlowId
+
+flow_add:
+  path: /home/flows/add
+  controller: App\Controller\FlowsController::addFlow
+sftp_add:
+  path: /home/sftp/add
+  controller: App\Controller\SftpController::addSftp
+
+flowProtkoll:
+  path: /home/flow/protokoll/{id}
+  controller: App\Controller\FlowProtokollController::getProtokollByFlowId
+flowConnection:
+  path: /home/flow/connection
+  controller: App\Controller\FlowConnectionController::index

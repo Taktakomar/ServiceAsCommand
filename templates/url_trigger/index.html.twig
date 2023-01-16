@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <div class="d-flex TitleWrap">
+            <h1 class="h3 mb-0 text-gray-800">Url Trigger</h1>
+        </div>
+    </div>
+    <div class ="tooltipcontainer" data-toggle="tooltip" data-placement="top" title="zu Flow Ansicht">
+    <div class="TitlelBackFile" >
+    <a class="btn btn-dark" href="{{ path('flow')}}">
+    <i class="fa fa-arrow-left " aria-hidden="true"></i>
+    </a>
+    </div>
+    </div>
+    <br>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+           Möchten Sie Flow manuell ausführen? Dann sind Sie hier richtig! 
+        </h6>
+        </div>
+        <div class="card-body">
+        <div class="table-responsive">
+            <table
+            class="table table-bordered"
+            id="dataTable"
+            width="100%"
+            cellspacing="0"
+            >
+            <thead>
+                <tr>
+                <th>Flow_Name</th>
+                <th>Flow_Url</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                <th>Flow_Name</th>
+                <th>Flow_Url</th>
+              
+                </tr>
+            </tfoot>
+            <tbody>
+            {% for flow in flows %}
+                {% if flow.isActiv() == false %}
+                <tr class ="flowElementStop">
+                {% else %}
+                <tr class ="flowElementplay">
+                {% endif %}
+                <td>{{ flow.getDisplayName() }} </td>
+                <td>{{ url('app_login') ~ flow.getEndpointString()}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+            <div class="row-8">
+                <div class="pagginationcol">
+                <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+                </nav>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
